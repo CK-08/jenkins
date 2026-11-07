@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiet Hours — Find Your Stillness</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f3f0e9;
+      color: #26352f;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background:
+        linear-gradient(180deg, rgba(24, 39, 37, .12), rgba(24, 39, 37, .05) 45%, rgba(24, 39, 37, .48)),
+        linear-gradient(135deg, #d9c9ad 0%, #a8b8a9 48%, #647b70 100%);
+    }
+
+    .sun {
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      background: #f5dfb7;
+      top: 16%;
+      right: 19%;
+      box-shadow: 0 0 100px 35px rgba(245, 223, 183, .25);
+      animation: glow 5s ease-in-out infinite alternate;
+    }
+
+    .mountains {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 62%;
+    }
+
+    .mountains svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    @keyframes glow {
+      from { transform: scale(1); opacity: .85; }
+      to { transform: scale(1.06); opacity: 1; }
+    }
+
+    nav {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 7%;
+      color: white;
+    }
+
+    .logo {
+      font-size: 15px;
+      letter-spacing: 4px;
+      font-weight: 600;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      margin-left: 30px;
+      opacity: .9;
+    }
+
+    nav a:hover {
+      opacity: .65;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      margin: auto 0;
+      padding: 0 10% 10%;
+      color: white;
+      max-width: 850px;
+      animation: appear 1.2s ease both;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      color: #f1dfc2;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(54px, 8vw, 100px);
+      line-height: 1.04;
+      font-weight: 500;
+      letter-spacing: -2px;
+    }
+
+    h1 em {
+      font-weight: 500;
+      color: #e9d4b1;
+    }
+
+    .hero-content p {
+      max-width: 420px;
+      line-height: 1.9;
+      font-size: 14px;
+      margin: 28px 0 35px;
+      color: rgba(255,255,255,.88);
+    }
+
+    .explore {
+      display: inline-block;
+      padding: 15px 25px;
+      border: 1px solid rgba(255,255,255,.75);
+      color: white;
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: .3s;
+    }
+
+    .explore:hover {
+      background: white;
+      color: #34483e;
+    }
+
+    .hero-note {
+      position: absolute;
+      z-index: 2;
+      right: 7%;
+      bottom: 45px;
+      color: rgba(255,255,255,.8);
+      font-size: 10px;
+      letter-spacing: 2px;
+      writing-mode: vertical-rl;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .intro {
+      padding: 110px 10%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .section-label {
+      color: #8b927e;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .intro-text {
+      color: #737c70;
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .quote {
+      background: #e6e5d9;
+      padding: 45px;
+      border-left: 2px solid #a18d6b;
+      margin-top: 30px;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      line-height: 1.6;
+      color: #435449;
+    }
+
+    .moments {
+      padding: 20px 10% 110px;
+    }
+
+    .moments-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 40px;
+      gap: 20px;
+    }
+
+    .moments-heading p {
+      max-width: 300px;
+      color: #858b7e;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 270px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background: #718276;
+      transition: transform .4s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .9;
+      transition: transform .6s;
+    }
+
+    .card:hover::before {
+      transform: scale(1.08);
+    }
+
+    .card:nth-child(1)::before {
+      background: linear-gradient(150deg, transparent 15%, rgba(20,40,32,.8)),
+        linear-gradient(35deg, #6c8578, #c9b99b);
+    }
+
+    .card:nth-child(2)::before {
+      background: linear-gradient(150deg, transparent 15%, rgba(20,40,32,.8)),
+        linear-gradient(35deg, #9c795d, #e0cba9);
+    }
+
+    .card:nth-child(3)::before {
+      background: linear-gradient(150deg, transparent 15%, rgba(20,40,32,.8)),
+        linear-gradient(35deg, #526b69, #aab7a6);
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card small {
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 9px;
+      opacity: .8;
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 29px;
+      margin-top: 10px;
+    }
+
+    .closing {
+      background: #34483e;
+      color: #f5f0e5;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .closing h2 {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .closing p {
+      color: #c6cbbd;
+      font-size: 13px;
+      margin: 22px auto 30px;
+      line-height: 1.8;
+    }
+
+    #breathButton {
+      border: 1px solid #c9b99b;
+      color: #f5f0e5;
+      background: transparent;
+      padding: 14px 25px;
+      font: inherit;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    #breathButton:hover {
+      background: #f5f0e5;
+      color: #34483e;
+    }
+
+    #message {
+      min-height: 24px;
+      margin-top: 22px;
+      color: #e3cfad;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+    }
+
+    footer {
+      padding: 25px 7%;
+      display: flex;
+      justify-content: space-between;
+      background: #26382f;
+      color: #aeb9aa;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 700px) {
+      nav { padding: 24px 6%; }
+      nav a { margin-left: 12px; font-size: 10px; }
+      .hero-content { padding: 0 7% 25%; }
+      .sun { width: 150px; height: 150px; right: 10%; }
+      .intro { grid-template-columns: 1fr; gap: 30px; padding: 75px 7%; }
+      .moments { padding: 10px 7% 75px; }
+      .moments-heading { display: block; }
+      .moments-heading p { margin-top: 18px; }
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: 220px; }
+      .hero-note { display: none; }
+      footer { gap: 15px; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero" id="home">
+    <div class="sun"></div>
+
+    <nav>
+      <div class="logo">QUIET HOURS.</div>
+      <div>
+        <a href="#about">ABOUT</a>
+        <a href="#moments">MOMENTS</a>
+      </div>
+    </nav>
+
+    <div class="mountains">
+      <svg viewBox="0 0 1440 650" preserveAspectRatio="xMidYMax slice">
+        <path d="M0 350 L210 120 L390 330 L620 80 L900 360 L1110 150 L1440 400 L1440 650 L0 650Z"
+              fill="#71877a" opacity=".55"/>
+        <path d="M0 440 L280 210 L500 430 L780 170 L1050 430 L1260 250 L1440 420 L1440 650 L0 650Z"
+              fill="#526d60" opacity=".8"/>
+        <path d="M0 510 L230 350 L450 500 L740 300 L1000 510 L1240 350 L1440 490 L1440 650 L0 650Z"
+              fill="#354f43"/>
+        <path d="M0 560 Q300 460 580 570 T1100 550 T1440 560 L1440 650 L0 650Z"
+              fill="#263e35"/>
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="eyebrow">A little space to breathe</div>
+      <h1>Find your<br><em>own quiet.</em></h1>
+      <p>
+        Somewhere between the first cup of coffee and the
+        morning light, there's a moment that belongs only to you.
+        Slow down. Look around. Be here.
+      </p>
+      <a href="#about" class="explore">Discover the feeling &nbsp; ↗</a>
+    </div>
+
+    <div class="hero-note">SLOW DOWN · STAY AWHILE</div>
+  </section>
+
+  <section class="intro" id="about">
+    <div>
+      <div class="section-label">01 — The little things</div>
+      <h2>Not every beautiful thing needs to be loud.</h2>
+      <div class="quote">
+        “Perhaps the best moments are the ones we almost overlook.”
+      </div>
+    </div>
+
+    <div class="intro-text">
+      <p>
+        Quiet Hours is a small reminder to make room for the things
+        that make an ordinary day feel special.
+      </p>
+      <br>
+      <p>
+        The smell of coffee in the morning. A familiar song.
+        A mountain view that makes you pause. A few minutes without
+        rushing anywhere.
+      </p>
+      <br>
+      <p>
+        You don't always need a plan. Sometimes, being present
+        is enough.
+      </p>
+    </div>
+  </section>
+
+  <section class="moments" id="moments">
+    <div class="moments-heading">
+      <div>
+        <div class="section-label">02 — A slower kind of day</div>
+        <h2>Collect little moments.</h2>
+      </div>
+      <p>
+        Three gentle reminders to find something lovely
+        in the everyday.
+      </p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-content">
+          <small>01 / Begin gently</small>
+          <h3>Morning rituals</h3>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-content">
+          <small>02 / Wander freely</small>
+          <h3>Open horizons</h3>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-content">
+          <small>03 / Find stillness</small>
+          <h3>Quiet evenings</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="section-label">03 — A small pause</div>
+    <h2>Take a moment. The world can wait.</h2>
+    <p>
+      You made it here. That's enough for now.<br>
+      Let this be your reminder to breathe.
+    </p>
+    <button id="breathButton">A little reminder</button>
+    <div id="message"></div>
+  </section>
+
+  <footer>
+    <span>QUIET HOURS. © 2026</span>
+    <span>MADE FOR SLOWER MOMENTS.</span>
+  </footer>
+
+  <script>
+    const button = document.getElementById("breathButton");
+    const message = document.getElementById("message");
+
+    const reminders = [
+      "You don't have to rush everything.",
+      "Small moments matter too.",
+      "Take things one day at a time.",
+      "It's okay to pause and begin again."
+    ];
+
+    let current = 0;
+
+    button.addEventListener("click", () => {
+      message.textContent = reminders[current];
+      current = (current + 1) % reminders.length;
+    });
+  </script>
+
+</body>
+</html>
